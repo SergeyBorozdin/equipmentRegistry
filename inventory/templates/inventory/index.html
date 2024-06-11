@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Добро пожаловать в реестр оборудования</h1>
+        <div class="mt-3">
+            <a href="{% url 'equipment_list' %}" class="btn btn-primary">Показать реестр</a>
+            <a href="{% url 'add_equipment' %}" class="btn btn-success">Добавить в реестр</a>
+            <a href="{% url 'delete_equipment' %}" class="btn btn-danger">Удалить из реестра</a>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Домой</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,38 +1,33 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from .models import Equipment
 from .forms import EquipmentForm
+
+
+def home(request):
+    return render(request, 'inventory/index.html')
+
 
 def equipment_list(request):
     equipments = Equipment.objects.all()
     return render(request, 'inventory/equipment_list.html', {'equipments': equipments})
 
 
-
-def equipment_detail(request, pk):
-    equipment = get_object_or_404(Equipment, pk=pk)
-    return render(request, 'inventory/equipment_detail.html', {'equipment': equipment})
-
-
-def equipment_new(request):
+def add_equipment(request):
     if request.method == "POST":
         form = EquipmentForm(request.POST, request.FILES)
         if form.is_valid():
-            equipment = form.save(commit=False)
-            equipment.save()
-            return redirect('equipment_detail', pk=equipment.pk)
+            form.save()
+            return redirect('equipment_list')
     else:
         form = EquipmentForm()
-    return render(request, 'inventory/equipment_edit.html', {'form': form})
+    return render(request, 'inventory/add_equipment.html', {'form': form})
 
 
-def equipment_edit(request, pk):
-    equipment = get_object_or_404(Equipment, pk=pk)
+def delete_equipment(request):
+    equipments = Equipment.objects.all()
     if request.method == "POST":
-        form = EquipmentForm(request.POST, request.FILES, instance=equipment)
-        if form.is_valid():
-            equipment = form.save(commit=False)
-            equipment.save()
-            return redirect('equipment_detail', pk=equipment.pk)
-    else:
-        form = EquipmentForm(instance=equipment)
-    return render(request, 'inventory/equipment_edit.html', {'form': form})
+        equipment_id = request.POST.get('equipment_id')
+        equipment = Equipment.objects.get(id=equipment_id)
+        equipment.delete()
+        return redirect('equipment_list')
+    return render(request, 'inventory/delete_equipment.html', {'equipments': equipments})
