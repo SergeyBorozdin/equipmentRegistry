@@ -10,6 +10,7 @@
 
 Новый реестр
 
+![picture](https://github.com/SergeyBorozdin/equipmentRegistry/blob/main/registr%20new1.png)
 ![picture1](https://github.com/SergeyBorozdin/equipmentRegistry/blob/main/registr%20new%202.png)
 ![picture2](https://github.com/SergeyBorozdin/equipmentRegistry/blob/main/registr%20new%203.png)
 ![picture2](https://github.com/SergeyBorozdin/equipmentRegistry/blob/main/registr%20new%204.png)
