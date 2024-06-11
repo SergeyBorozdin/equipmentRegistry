@@ -4,7 +4,9 @@
 Создан при помощи нейросети GPT4o на django и python
 
 Пример реестра в эксель
-![id1]<https://github.com/SergeyBorozdin/equipmentRegistry/blob/main/registr%20old.png>
+
+![picture](https://github.com/SergeyBorozdin/equipmentRegistry/blob/main/registr%20old.png)
+
 
 
 
