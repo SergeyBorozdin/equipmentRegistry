@@ -12,6 +12,7 @@
 
 ![picture1](https://github.com/SergeyBorozdin/equipmentRegistry/blob/main/registr%20new%202.png)
 ![picture2](https://github.com/SergeyBorozdin/equipmentRegistry/blob/main/registr%20new%203.png)
+![picture2](https://github.com/SergeyBorozdin/equipmentRegistry/blob/main/registr%20new%204.png)
 
 
 https://chatgpt.com/share/f3060899-66c8-4bd6-8b9c-c92af9b51183
