@@ -1,0 +1,12 @@
+python -m venv venv
+
+.\venv\Scripts\activate
+или source venv/bin/activate на мак
+
+pip install django
+
+python -m django --version
+
+python manage.py runserver
+
+браузер http://127.0.0.1:8000/
