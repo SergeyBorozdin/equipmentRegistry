@@ -1,58 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipment List</title>
-    <!-- Подключение стилей DataTables через CDN -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-    <!-- Подключение jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Подключение скриптов DataTables через CDN -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-</head>
-<body>
-    <h1>Equipment List</h1>
-    <table id="equipmentTable" class="display">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Dimension 1</th>
-                <th>Dimension 2</th>
-                <th>Dimension 3</th>
-                <th>Supplier Art</th>
-                <th>Quantity</th>
-                <th>Storage Location</th>
-                <th>Photo</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for equipment in equipments %}
-            <tr>
-                <td>{{ equipment.name }}</td>
-                <td>{{ equipment.dimension1 }}</td>
-                <td>{{ equipment.dimension2 }}</td>
-                <td>{{ equipment.dimension3 }}</td>
-                <td>{{ equipment.supplier_art }}</td>
-                <td>{{ equipment.quantity }}</td>
-                <td>{{ equipment.storage_location }}</td>
-                <td>
-                    {% if equipment.photo %}
-                    <img src="{{ equipment.photo.url }}" alt="{{ equipment.name }}" width="50" height="50">
-                    {% else %}
-                    No photo
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+{% extends "inventory/base.html" %}
 
-    <!-- Инициализация DataTables -->
-    <script>
-        $(document).ready(function() {
-            $('#equipmentTable').DataTable();
-        });
-    </script>
-</body>
-</html>
+{% block title %}Реестр оборудования{% endblock %}
+
+{% block content %}
+<h1>Реестр оборудования</h1>
+<a href="{% url 'add_equipment' %}" class="btn btn-primary">Добавить в реестр</a>
+<a href="{% url 'delete_equipment' %}" class="btn btn-danger">Удалить из реестра</a>
+<table id="equipment-table" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Размер 1</th>
+            <th>Размер 2</th>
+            <th>Размер 3</th>
+            <th>Артикул поставщика</th>
+            <th>Количество</th>
+            <th>Местоположение на складе</th>
+            <th>Фото</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for equipment in equipments %}
+        <tr>
+            <td>{{ equipment.name }}</td>
+            <td>{{ equipment.dimension1 }}</td>
+            <td>{{ equipment.dimension2 }}</td>
+            <td>{{ equipment.dimension3 }}</td>
+            <td>{{ equipment.supplier_art }}</td>
+            <td>{{ equipment.quantity }}</td>
+            <td>{{ equipment.storage_location }}</td>
+            <td>
+                {% if equipment.photo %}
+                    <img src="{{ equipment.photo.url }}" alt="{{ equipment.name }}" style="width: 100px;">
+                {% else %}
+                    No photo available
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Include jQuery and DataTables JS/CSS -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+<script>
+    $(document).ready(function() {
+        $('#equipment-table').DataTable();
+    });
+</script>
+{% endblock %}

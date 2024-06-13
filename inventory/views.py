@@ -2,15 +2,12 @@ from django.shortcuts import render, redirect
 from .models import Equipment
 from .forms import EquipmentForm
 
-
 def home(request):
-    return render(request, 'inventory/index.html')
-
+    return equipment_list(request)
 
 def equipment_list(request):
     equipments = Equipment.objects.all()
     return render(request, 'inventory/equipment_list.html', {'equipments': equipments})
-
 
 def add_equipment(request):
     if request.method == "POST":
@@ -21,7 +18,6 @@ def add_equipment(request):
     else:
         form = EquipmentForm()
     return render(request, 'inventory/add_equipment.html', {'form': form})
-
 
 def delete_equipment(request):
     equipments = Equipment.objects.all()

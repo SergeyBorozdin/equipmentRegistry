@@ -1,15 +1,19 @@
 from django.db import models
 
-
 class Equipment(models.Model):
-    name = models.CharField(max_length=200)
-    dimension1 = models.FloatField(default=0.0)  # значение по умолчанию
-    dimension2 = models.FloatField(default=0.0)
-    dimension3 = models.FloatField(default=0.0)
-    supplier_art = models.CharField(max_length=200)
+    objects = None
+    name = models.CharField(max_length=100)
+    dimension1 = models.FloatField()
+    dimension2 = models.FloatField()
+    dimension3 = models.FloatField()
+    supplier_art = models.CharField(max_length=100)
     quantity = models.IntegerField()
-    storage_location = models.CharField(max_length=200)
+    storage_location = models.CharField(max_length=100)
     photo = models.ImageField(upload_to='equipment_photos/', blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+    @property
+    def has_photo(self):
+        return bool(self.photo and hasattr(self.photo, 'url'))
